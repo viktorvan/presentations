@@ -1,45 +1,272 @@
 <!doctype html>
 <html lang="en">
 
-	<head>
-		<meta charset="utf-8">
+<head>
+    <meta charset="utf-8">
 
-		<title>reveal.js - Markdown Example</title>
+    <title>Hotwire</title>
 
-		<link rel="stylesheet" href="../dist/reveal.css">
-		<link rel="stylesheet" href="../dist/theme/white.css" id="theme">
+    <link rel="stylesheet" href="../dist/reveal.css">
+    <link rel="stylesheet" href="../dist/theme/black.css" id="theme">
 
-        <link rel="stylesheet" href="../plugin/highlight/monokai.css">
-	</head>
+    <link rel="stylesheet" href="../plugin/highlight/monokai.css">
+</head>
 
-	<body>
+<body>
 
-		<div class="reveal">
+    <div class="reveal">
 
-			<div class="slides">
+        <div class="slides">
 
-                <!-- Use external markdown resource, separate slides by three newlines; vertical slides by two newlines -->
-                <section data-markdown="slides/slide1.md" data-separator="^\n\n\n" data-separator-vertical="^\n\n"></section>
-            </div>
-		</div>
+            <section>
+                <section data-auto-animate>
+                    <h1 class="r-fit-text">Hotwire</h1>
+                </section>
 
-		<script src="../dist/reveal.js"></script>
-        <script src="../plugin/markdown/markdown.js"></script>
-        <script src="../plugin/highlight/highlight.js"></script>
-        <script src="../plugin/notes/notes.js"></script>
+                <section data-auto-animate>
+                    <h1 class="r-fit-text" style="color:darkgray;">Hotwire</h1>
+                    <p><strong style="color: gray;">H</strong style="color: gray;">TML <strong
+                            style="color: gray;">O</strong>ver <strong style="color: gray;">T</strong>he <strong
+                            style="color:gray;">WIRE</strong></p>
+                </section>
 
-		<script>
+                <section data-background-iframe="https://hotwire.dev">
+                    <aside class="notes">
+                        History: Turbolinks + Stimlus
+                        Ruby on Rails
+                        Backend agnostic
+                    </aside>
+                </section>
 
-			Reveal.initialize({
-				controls: true,
-				progress: true,
-				history: true,
-				center: true,
+            </section>
 
-				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes ]
-			});
+            <section>
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Hotwire</h1>
+                        <p>turbo</p>
+                        <p>stimulus</p>
+                    </div>
 
-		</script>
+                    <aside class="notes">
+                        Omakase, use the parts you want
+                        Ruby on Rails, Convention over configuration
+                    </aside>
+                </section>
 
-	</body>
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Hotwire</h1>
+                        <p>turbo<del>links</del></p>
+                        <p>stimulus</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Hotwire</h1>
+                        <p>turbo</p>
+                        <p>stimulus</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Hotwire</h1>
+                        <p style="color:gray">turbo</p>
+                        <p><small>single-page webapp using HTML over the wire</small></p>
+                        <p>stimulus</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Hotwire</h1>
+                        <p style="color:gray">turbo</p>
+                        <p><small>single-page webapp using HTML over the wire</small></p>
+                        <p style="color:gray">stimulus</p>
+                        <p><small>small javascript framework</small></p>
+                    </div>
+                </section>
+            </section>
+
+            <section>
+
+                <section data-auto-animate>
+                    <h1 class="r-fit-text">Turbo</h1>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo</h1>
+                        <p>turbo drive</p>
+                        <p>turbo frames</p>
+                        <p>turbo streams</p>
+                    </div>
+                </section>
+            </section>
+
+            <section data-auto-animate>
+                <div style="text-align: left;">
+                    <h1 style="color: gray;">Turbo drive</h1>
+                    <p>demo</p>
+                </div>
+            </section>
+
+            <section>
+                <section data-auto-animate>
+                    <h1 class="r-fit-text">Turbo Frames</h1>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo frames</h1>
+                    </div>
+
+                    <pre><code data-trim data-line-numbers=2,6|5|8,12-13>
+                        <div>
+                            <turbo-frame id="message_1">
+                                <h1>My message title</h1>
+                                <p>My message content</p>
+                                <a href="/messages/1/edit">Edit this message</a>
+                            </turbo-frame>
+                        
+                            <turbo-frame id="comments">
+                                <div id="comment_1">One comment</div>
+                                <div id="comment_2">Two comments</div>
+                        
+                                <form action="/messages/comments">...</form>
+                            </turbo-frame>
+                        </div>
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo frames</h1>
+                        <p>lazy loading</p>
+                    </div>
+
+                    <pre><code data-trim data-line-numbers=8,11>
+                        <div>
+                            <h1>Imbox</h1>
+                        
+                            <div id="emails">
+                                ...
+                            </div>
+                        
+                            <turbo-frame id="set_aside_tray" src="/emails/set_aside">
+                            </turbo-frame>
+                        
+                            <turbo-frame id="reply_later_tray" src="/emails/reply_later">
+                            </turbo-frame>
+                        </div>
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo frames</h1>
+                        <p>targets</p>
+                    </div>
+
+                    <pre><code data-trim data-line-numbers=|3|3,7|3,7,12>
+                        <div>
+                            <turbo-frame id="message_1">
+                                <a href="/messages/1/edit">
+                                    <!-- Edit this message (within the current frame) -->
+                                </a>
+                        
+                                <a href="/messages/1/permission" data-turbo-frame="_top">
+                                    <!-- Change permissions (replace the whole page) -->
+                                </a>
+                            </turbo-frame>
+                        
+                            <form action="/messages/1/delete" data-turbo-frame="message_1">
+                                <input type="submit" value="Delete this message">
+                            </form>
+                        </div>
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo frames</h1>
+                        <p>demo</p>
+                    </div>
+                </section>
+            </section>
+
+            <section>
+                <section data-auto-animate>
+                    <h1 class="r-fit-text">Turbo Streams</h1>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo Streams</h1>
+                        <p>CRUD operations against the DOM</p>
+                    </div>
+
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo Streams</h1>
+                    </div>
+
+                    <pre><code data-trim data-line-numbers>
+                        <turbo-stream action="replace" target="message_1">
+                            <template>
+                                <div id="message_1">
+                                    <!-- This div will replace the existing element 
+                                        with the DOM ID "message_1". -->
+                                </div>
+                            </template>
+                        </turbo-stream>
+                    </code></pre>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo Streams</h1>
+                        <p>append</p>
+                        <p>prepend</p>
+                        <p>replace</p>
+                        <p>update</p>
+                        <p>remove</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Turbo Streams</h1>
+                        <p>demo</p>
+                    </div>
+                </section>
+            </section>
+
+        </div>
+    </div>
+
+    <script src="../dist/reveal.js"></script>
+    <script src="../plugin/markdown/markdown.js"></script>
+    <script src="../plugin/highlight/highlight.js"></script>
+    <script src="../plugin/notes/notes.js"></script>
+
+    <script>
+
+        Reveal.initialize({
+            controls: true,
+            progress: true,
+            history: true,
+            center: true,
+
+            plugins: [RevealMarkdown, RevealHighlight, RevealNotes]
+        });
+
+    </script>
+
+</body>
+
 </html>
