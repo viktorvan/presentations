@@ -29,9 +29,9 @@
 
                 <section data-auto-animate>
                     <h1 class="r-fit-text" style="color:darkgray;">Hotwire</h1>
-                    <p><strong style="color: gray;">H</strong style="color: gray;">TML <strong
-                            style="color: gray;">O</strong>ver <strong style="color: gray;">T</strong>he <strong
-                            style="color:gray;">WIRE</strong></p>
+                    <p style="color:gray;"><strong style="color: white;">H</strong style="color: white;">TML <strong
+                            style="color: white;">O</strong>ver <strong style="color: white;">T</strong>he <strong
+                            style="color:white;">WIRE</strong></p>
                 </section>
 
                 <section data-background-iframe="https://hotwire.dev">
@@ -232,10 +232,10 @@
                                 ...
                             </div>
                         
-                            <turbo-frame id="set_aside_tray" src="/emails/set_aside">
+                            <turbo-frame src="/emails/set_aside" id="set_aside_tray">
                             </turbo-frame>
                         
-                            <turbo-frame id="reply_later_tray" src="/emails/reply_later">
+                            <turbo-frame src="/emails/reply_later" id="reply_later_tray">
                             </turbo-frame>
                         </div>
                     </code></pre>
@@ -267,11 +267,16 @@
                 </section>
 
                 <section data-auto-animate>
-                    <div style="text-align: left;">
-                        <h1 style="color: gray;">Turbo frames</h1>
-                        <p>demo</p>
-                    </div>
+                    <h1 class="r-fit-text">Turbo frames</h1><br/>
+                    <a href="https://active-game-night-test.azurewebsites.net/">demo</a>
+                    <aside class="notes">
+                        Games-page: 
+                        each game is in a turbo-frame
+                        Normal use: edit
+                        Target another frame: Add new game: link is turbo-frame save button has allGames turboframe as target
+                    </aside>
                 </section>
+
             </section>
 
 
@@ -287,16 +292,10 @@
                     <div style="text-align: left;">
                         <h1 style="color: gray;">Turbo Streams</h1>
                         <p>CRUD operations against the DOM</p>
+                        <code class="fragment" style="font-size: 18pt;">Content-Type: text/vnd.turbo-stream.html</code>
                     </div>
 
-                </section>
-
-                <section data-auto-animate>
-                    <div style="text-align: left;">
-                        <h1 style="color: gray;">Turbo Streams</h1>
-                    </div>
-
-                    <pre><code data-trim data-line-numbers>
+                    <pre class="fragment"><code data-trim data-line-numbers=|1|2-7>
                         <turbo-stream action="replace" target="message_1">
                             <template>
                                 <div id="message_1">
@@ -306,24 +305,39 @@
                             </template>
                         </turbo-stream>
                     </code></pre>
+
+                    <div style="text-align: left;">
+                        <code class="fragment" style="font-size: 18pt;">
+                            Actions:
+                            append
+                            prepend
+                            replace
+                            update
+                            remove
+                        </code>
+                    </div>
+
                 </section>
 
                 <section data-auto-animate>
                     <div style="text-align: left;">
                         <h1 style="color: gray;">Turbo Streams</h1>
-                        <p>append</p>
-                        <p>prepend</p>
-                        <p>replace</p>
-                        <p>update</p>
-                        <p>remove</p>
+                        <p>Where can they be used?</h4>
+                        <p class="fragment">Almost anywhere, but most useful:</p>
+                        <p class="fragment">As a response to a form</p>
+                        <p class="fragment">Over websockets / server-sent-events</p>
                     </div>
                 </section>
 
                 <section data-auto-animate>
-                    <div style="text-align: left;">
-                        <h1 style="color: gray;">Turbo Streams</h1>
-                        <p>demo</p>
-                    </div>
+                    <h1 class="r-fit-text">Turbo streams</h1><br/>
+                    <a href="https://active-game-night-test.azurewebsites.net/">demo</a>
+
+                    <aside class="notes">
+                        Edit Game: form errors
+                        Add GameNight: Add more inputs
+                        SSE: Votes
+                    </aside>
                 </section>
             </section>
 
@@ -348,18 +362,96 @@
                 <section data-auto-animate>
                     <div style="text-align: left;">
                         <h1 style="color: gray;">Stimulus</h1>
-                        <p style="color: gray;"><em>Stimulus is a javascript framework designed to enhance static or server-rendered HTML</em></p>
-                        <p style="color: gray;"><em>—by connecting JavaScript 'controllers' to elements on the page using simple annotations.</em></p>
                     </div>
 
-                    <pre><code data-trim data-line-numbers>
-                        <div data-controller="hello">
-                            <input type="text">
-                            <button>Greet</button>
+                    <pre><code data-trim data-line-numbers=|1|2>
+                        <div data-controller="my-controller">
+                            <button data-action="click->my-controller#showAlert">
+                                Alert me!
+                            </button>
                         </div>
                     </code></pre>
 
+                    <pre class="fragment"><code data-trim data-line-numbers>
+                        // src/controllers/greet_controller.js
+
+                        import {Controller} from "stimulus"
+
+                        export default class extends Controller {
+                            showAlert() {
+                                alert("Hello there!!");
+                            }
+                        }
+                    </code></pre>
+
                 </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Stimulus</h1>
+                        <p><small>Target elements</small></p>
+                    </div>
+
+                    <pre><code data-trim data-line-numbers=1|2-4|5>
+
+                    <div data-controller="greet-viktor">
+                        <input type="text" data-greet-viktor-target="input" />
+                        <div style="color:red;" data-greet-viktor-target="errorMessage"></div>
+                        <div data-greet-viktor-target="greeting"></div>
+                        <button data-action="click->greet-viktor#showGreeting">
+                            Greet!
+                        </button>
+                    </div>
+                    </code></pre>
+
+                    <pre class="fragment"><code data-trim data-line-numbers=2|5,6,9>
+                        export default class extends Controller {
+                            static targets = ["input", "errorMessage", "greeting"]
+
+                            showGreeting() {
+                                if (this.inputTarget.value != "Viktor") {
+                                    this.errorMessageTarget.innerHTML = "You are not Viktor!"
+                                }
+                                else {
+                                    this.greetingTarget.innerHTML = "Welcome Viktor!"
+                                }
+                            }
+                        }
+                    </code></pre>
+
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Stimulus</h1>
+                        <p>Controller lifecycle methods:</p>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <div style="text-align: left;">
+                        <h1 style="color: gray;">Stimulus</h1>
+                        <p style="color:gray;">Controller lifecycle methods:</p>
+                        <span class="fragment">
+                            <p><code>initialize()</code></p>
+                            <p><small>Once, when the controller is first instantiated</small></p>
+                        </span>
+                        <span class="fragment">
+                            <p><code>connect()</code></p>
+                            <p><small>Anytime the controller is connected to the DOM</small></p>
+                        </span>
+                        <span class="fragment">
+                            <p><code>disconnect()</code></p>
+                            <p><small>Anytime the controller is disconnected from the DOM</small></p>
+                        </span>
+                    </div>
+                </section>
+
+                <section data-auto-animate>
+                    <h1 class="r-fit-text">Stimulus</h1><br/>
+                    <a href="https://active-game-night-test.azurewebsites.net/">demo</a>
+                </section>
+
             </section>
 
 
