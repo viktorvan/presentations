@@ -18,6 +18,9 @@
 
         <div class="slides">
 
+            <section>
+                <img src="/slides/assets/partners.png" />
+            </section>
 
 
             <!-- HOTWIRE  -->
@@ -56,6 +59,7 @@
                 <section data-auto-animate>
                     <div style="text-align: left;">
                         <h1 style="color: gray;">Hotwire</h1>
+                        <p><small>Javascript library in two parts:</small></p>
                         <p>turbo</p>
                         <p>stimulus</p>
                     </div>
@@ -69,6 +73,7 @@
                 <section data-auto-animate>
                     <div style="text-align: left;">
                         <h1 style="color: gray;">Hotwire</h1>
+                        <p style="color:gray;"><small>Javascript library in two parts:</small></p>
                         <p style="color:gray">turbo</p>
                         <p><small>build single-page webapps without javascript using HTML over the wire</small></p>
                         <p>stimulus</p>
@@ -78,6 +83,7 @@
                 <section data-auto-animate>
                     <div style="text-align: left;">
                         <h1 style="color: gray;">Hotwire</h1>
+                        <p style="color:gray;"><small>Javascript library in two parts:</small></p>
                         <p style="color:gray">turbo</p>
                     <p><small>build single-page webapps without javascript using HTML over the wire</small></p>
                         <p style="color:gray">stimulus</p>
@@ -88,6 +94,7 @@
                 <section data-auto-animate>
                     <div style="text-align: left;">
                         <h1 style="color: gray;">Hotwire</h1>
+                        <p style="color:gray;"><small>Javascript library in two parts:</small></p>
                         <p>turbo<del>links</del></p>
                         <p><small>build single-page webapps without javascript using HTML over the wire</small></p>
                         <p style="color:gray">stimulus</p>
@@ -292,10 +299,17 @@
                     <div style="text-align: left;">
                         <h1 style="color: gray;">Turbo Streams</h1>
                         <p>CRUD operations against the DOM</p>
-                        <code class="fragment" style="font-size: 18pt;">Content-Type: text/vnd.turbo-stream.html</code>
+                        <code class="fragment" data-fragment-index="1" style="font-size: 18pt;">
+                            Actions:
+                            append
+                            prepend
+                            replace
+                            update
+                            remove
+                        </code>
                     </div>
 
-                    <pre class="fragment"><code data-trim data-line-numbers=|1|2-7>
+                    <pre class="fragment" data-fragment-index="2"><code data-trim data-line-numbers=|1|2-7>
                         <turbo-stream action="replace" target="message_1">
                             <template>
                                 <div id="message_1">
@@ -307,14 +321,7 @@
                     </code></pre>
 
                     <div style="text-align: left;">
-                        <code class="fragment" style="font-size: 18pt;">
-                            Actions:
-                            append
-                            prepend
-                            replace
-                            update
-                            remove
-                        </code>
+                        <code class="fragment" data-fragment-index="2" style="font-size: 18pt;">Content-Type: text/vnd.turbo-stream.html</code>
                     </div>
 
                 </section>
