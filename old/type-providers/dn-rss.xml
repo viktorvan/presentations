@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0" xmlns:media="http://search.yahoo.com/mrss/" xmlns:dc="http://purl.org/dc/elements/1.1/">
+  <channel>
+    <title>Nyheter</title>
+    <link>https://www.dn.se/</link>
+    <description>Nyheter</description>
+    <language>sv-se</language>
+    <image>
+      <title>Dagens Nyheter</title>
+      <url>https://www.dn.se/static/images/180__cbc08ae847642b91b9ff6c0092c9c7e80.png</url>
+      <link>https://www.dn.se/</link>
+    </image>
+    <item>
+      <title>Transportstyrelsen ska granska SAS</title>
+      <link>https://www.dn.se/ekonomi/transportstyrelsen-ska-granska-sas/</link>
+      <description>Transportstyrelsen ska granska hur säkerhetsrapporteringen fungerar i SAS.</description>
+      <guid>https://www.dn.se/ekonomi/transportstyrelsen-ska-granska-sas/</guid>
+      <pubDate>Fri, 4 Oct 2019 15:33:38 +0200</pubDate>
+      <dc:creator>Andreas Lindberg</dc:creator>
+      <media:content type="image/jpeg" url="https://cached-images.bonnier.news/cms30/UploadedImages/2019/10/4/9f059ed8-d4f3-49c6-84f9-f28999e6507b/bigOriginal.jpg?interpolation=lanczos-none&amp;downsize=1000%3A*&amp;output-quality=80&amp;output-format=jpeg">
+        <media:credit scheme="urn:ebu">Christine Olsson/TT</media:credit>
+        <media:description></media:description>
+      </media:content>
+    </item>
+    <item>
+      <title>Filmades av polis – frias från grovt vapenbrott</title>
+      <link>https://www.dn.se/sthlm/filmades-av-polis-frias-fran-grovt-vapenbrott/</link>
+      <description>Två män i 25-årsåldern friades på fredagen från misstankar om grovt vapenbrott.</description>
+      <guid>https://www.dn.se/sthlm/filmades-av-polis-frias-fran-grovt-vapenbrott/</guid>
+      <pubDate>Fri, 4 Oct 2019 15:33:26 +0200</pubDate>
+      <dc:creator>Ulrika By</dc:creator>
+      <media:content type="image/jpeg" url="https://cached-images.bonnier.news/cms30/UploadedImages/2019/10/4/9e4c95d4-2104-4d4b-8aca-e7e6117381fd/bigOriginal.jpg?interpolation=lanczos-none&amp;downsize=1000%3A*&amp;output-quality=80&amp;output-format=jpeg">
+        <media:credit scheme="urn:ebu">Polisen</media:credit>
+        <media:description>Polisen ersatte de riktiga vapnen med replikor, filmade när två män, enligt åklagaren, kom för att hämta vapnen. Tingsrätten friar dock männen.</media:description>
+      </media:content>
+    </item>
+  </channel>
+</rss>

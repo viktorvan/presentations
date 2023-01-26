@@ -1,0 +1,7 @@
+framework: netstandard2.0
+source https://api.nuget.org/v3/index.json
+storage: none
+
+nuget FSharp.Core 4.5.4
+nuget FSharp.Data
+nuget FSharp.Data.SqlClient //

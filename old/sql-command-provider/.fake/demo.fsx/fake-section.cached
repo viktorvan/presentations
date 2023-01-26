@@ -1,0 +1,116 @@
+#r "paket:
+nuget FSharp.Core 4.5.4
+nuget FSharp.Data
+nuget FSharp.Data.SqlClient //"
+
+#load "./.fake/demo.fsx/intellisense.fsx"
+
+open FSharp.Data
+open System.Data.SqlClient
+
+[<Literal>]
+let ConnectionString = "Data Source=.;Initial Catalog=ChickenCheck;User ID=sa;Password=hWfQm@s62[CJX9ypxRd8"
+
+type GetAllChickensSql = SqlCommandProvider<"SELECT * FROM Chicken", ConnectionString>
+type Chicken = GetAllChickensSql.Record
+
+let getAllChickens() : Chicken list =
+    use cmd = new GetAllChickensSql(ConnectionString)
+    cmd.Execute() 
+    |> Seq.toList
+
+let printChicken (chicken: Chicken) =
+    printfn "Hönan heter %s och är av rasen %s. Uppdaterades senast: %O" 
+        chicken.Name 
+        chicken.Breed 
+        chicken.LastModified
+
+type GetAllEggsSql = SqlCommandProvider<"SELECT * FROM Egg", ConnectionString>
+
+let getAllEggs() =
+    use cmd = new GetAllEggsSql(ConnectionString)
+    cmd.Execute()
+    |> Seq.toList
+
+type GetChickensByDateSql = SqlCommandProvider<"SELECT * FROM Chicken Where Created > @date", ConnectionString>
+
+let getChickensByDate() =
+    use cmd = new GetChickensByDateSql(ConnectionString)
+    cmd.Execute(System.DateTime.Today.AddDays(-70.))
+
+// type InsertEggProc = SqlCommandProvider<"exec InsertEgg @input", ConnectionString> 
+// type InsertEggTVP = InsertEggProc.InsertEggType
+
+type DB = SqlProgrammabilityProvider<ConnectionString>
+type InsertEggProc = DB.dbo.InsertEgg
+type InsertEggTVP = DB.dbo.``User-Defined Table Types``.InsertEggType
+
+let runWithTransaction (conn: SqlConnection) onError f =
+    conn.Open()
+    let tran = conn.BeginTransaction()
+    try
+        f conn tran
+        tran.Commit()
+    with exn -> 
+        tran.Rollback()
+        onError exn
+
+let insertEggs eggs =
+    use conn = new SqlConnection(ConnectionString)
+    
+    let insertEggsTran conn tran =
+        failwith "boom no database"
+        use cmd = new InsertEggProc(conn, transaction = tran)
+        cmd.Execute eggs |> ignore
+
+    runWithTransaction 
+        conn 
+        (printfn "Exception: %O") 
+        insertEggsTran
+
+1
+// getAllEggs() |> Seq.length |> printfn "We start with %i eggs"
+
+// let newEggs = 
+//     getAllChickens()
+//     |> List.map (fun c -> Inser|EggTVP(c.Id, System.DateTime.Today, 2, System.DateTime.Now, System.DateTime.Now))
+
+// newEggs
+// |> insertEggs
+
+// getAllEggs() |> Seq.length |> printfn "After inserting we have %i eggs"
+
+// **********
+
+// json
+
+type RecipesJson = JsonProvider<"ChristmasRecipesSchema.json"> 
+type Recipes = RecipesJson.Root
+
+let mostIngredients =
+    // RecipesJson.Load "ChristmasRecipesFull.json" 
+    let groupedByNumIngredients =
+        RecipesJson.GetSamples()
+        |> Array.groupBy (fun r -> r.Ingredients.Length)
+    let maxNumIngredients =
+        groupedByNumIngredients
+        |> Array.map fst 
+        |> Array.max
+
+    printfn "Max number of ingredients: %i" maxNumIngredients
+
+#I __SOURCE_DIRECTORY__
+type Xml = XmlProvider<"FSharp.Core.xml">
+type Doc = Xml.Doc
+let xml = Xml.GetSample()
+
+printfn "AssemblyName: %s" xml.Assembly.Name
+
+let folder (state: Xml.Member) (value: Xml.Member) =
+    if value.Name.Length > state.Name.Length then value else state
+
+(xml.Members.[0], xml.Members)
+||> Array.fold folder 
+|> (fun membr -> membr.Name.Length)
+|> printfn "longest member name: %i" 
+
